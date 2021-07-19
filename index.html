@@ -14,11 +14,10 @@
 <body>
     <!--Titre-->
     <header> 
-        <div  class="presentation">
+        
             <h1>Mes Hobbies</h1>
             <h4>les hobbies, (donner definition)</h4>
-    
-     </div>
+
 
     </header>
 
@@ -27,6 +26,17 @@
  <nav id="top-hobbies">
      <h2>Mon top 2 des hobbies:</h2>
      <div class="hobbies1">
+         <div class="hobby">
+            <div class="img">
+                <img src="images/coding.jpg" alt="coding"/>
+            </div>
+            
+            <h3>titre hobby</h3>
+            <button class="btnHobby" id="detail">
+               Afficher les détails
+            </button>
+            <button class="btnHobby" id="add">Ajouter à mon Top</button>
+        </div>
          <span>1st</span>
      </div>
      <div class="hobbies2">
@@ -40,18 +50,23 @@
         <input type="submit" value="Rechercher"/>
         
      </div>
-     <div class="detail">
+     <div class="detail" id="detail">
          <input type="checkbox" id="details" checked="checked"/>
          <p>Afficher les détails</p>
      </div>
     <div class="hobbiesList">
         <div class="hobby">
-            <img src="images/coding.jpg" alt="coding"/>
+            <div class="img">
+                <img src="images/coding.jpg" alt="coding"/>
+            </div>
+            
             <h3>titre hobby</h3>
-            <button class="detail">
+            <button class="btnHobby" id="detail">
                Afficher les détails
             </button>
+            <button class="btnHobby" id="add">Ajouter à mon Top</button>
         </div>
+        
     </div>
     <div id="hobbiesDetail">
         <h3>Détail du hobby</h3>
