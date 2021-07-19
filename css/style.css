@@ -1,0 +1,107 @@
+/**Reset Css**/
+body, p, h1, h2, h3, h4, h5, h6{
+    margin:0;
+    box-sizing: border-box;
+    
+}
+h1, h2, h3, h4, h5, h6 {
+   
+    font-family: 'Federo', sans-serif;
+}
+.hobbies1, .hobbies2, .hobbiesList{
+    background-color:white;
+    border:1px solid white;
+    box-sizing: border-box;
+    margin:0, auto;
+    max-width: 250px;
+    padding: 10px;
+}
+
+/**Header**/
+header{
+    background-color:rgb(13, 0, 54);
+}
+ header h1, header h4{
+     color:white;
+ }
+
+/**Nav**/
+nav{
+    width: 250px;
+    height:800px;
+    position:absolute;
+    margin:20px auto;
+    left:10px;
+}
+nav h2{
+    margin: 20px 0;
+    text-decoration: underline;
+    text-align: center;
+}
+nav div{
+    border:solid 1px black;
+    margin:10px;
+    height: 350px;
+    position:relative;
+    text-align: center;
+}
+
+nav div span{
+    font-size: 50px;
+    position: relative;
+    top:50%;
+    
+}
+/**Global**/
+
+body{
+    background-color:#bac4cc7e;
+    font-family: 'Federant', cursive;
+    margin: 0 auto;
+
+}
+
+.hobbies{
+    width: 70%;
+    max-width: 1000px;
+    position:absolute;
+    left:300px;
+    border:solid 1px white;
+    margin:40px auto;
+}
+.detail{
+    display:flex;
+    margin:10px 0;
+}
+
+.hobby{
+    text-align: center;
+}
+.hobby img{
+   width: 210px;
+   height: 210px; 
+}
+
+#hobbiesDetail{
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+#hobbiesDetail h3{
+    text-decoration: underline;
+    color:white;
+    background-color:rgb(102, 4, 158);
+    padding: 10px;
+}
+/**Footer**/
+footer{
+    background-color:rgb(13, 0, 54);
+text-align: center;
+padding: 20px;
+position: fixed;
+bottom: 0;
+width: 100%;
+}
+footer h4{
+    color:white;
+}
