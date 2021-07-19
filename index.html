@@ -5,8 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Hobbies</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="data/hobbies.js"></script>
 </head>
 <body>
-    
+    <!--Titre-->
+<div  class="presentation">
+        <h1>Mes Hobbies</h1>
+        <h4>les hobbies, (donner definition)</h4>
+
+ </div>
+    <!--Mon TOP-->
+ <div class="top-hobbies" id="top-hobbies">
+     <h3>Mon top 2 des hobbies:</h3>
+     <div class="hobbies1">
+         <span>1st</span>
+     </div>
+     <div class="hobbies2">
+         <span>2nd</span>
+     </div>
+ </div>
+    <!-- Liste des Hobbies-->
+ <div class="hobbies" id="hobbies">
+     <div class="search">
+        <input type="text" name=" " value=" " placeholder=" rechercher un hobby" id="filter"/>
+        <input type="submit" value="Rechercher"/>
+        
+     </div>
+     <div class="detail">
+         <input type="checkbox" id="details" checked="checked"/>
+         <p>Afficher les détails</p>
+     </div>
+    <div class="hobbiesList">
+        
+    </div>
+    <div id="hobbiesDetail">
+        
+    </div>
+ </div>
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

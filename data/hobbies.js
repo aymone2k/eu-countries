@@ -13,7 +13,7 @@ var hobbiesData = [
    {
      title : "Volunteer" ,
      image : "images/volunteer.png" ,
-     text : `Aider comme je peux ; tendre la main à ceux qui en on besoin dans le respect et la bienveillance `
+     text : `Aider autant que possible les autres; tendre la main à ceux qui en on besoin dans le respect et la bienveillance `
     },
     {
       title : "Travel" ,
