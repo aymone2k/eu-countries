@@ -124,7 +124,7 @@ body{
    padding: 5px;
 }
 
-.btnHobby{
+.btnHobbyDetail, .btnHobbyAdd{
     margin:5px auto;
 }
 
@@ -140,9 +140,10 @@ body{
     background-color:rgb(102, 4, 158);
     padding: 10px;
 }
-#hobbiesDetail p{
+#hobbyDetail{
     min-height: 100px;
     margin: 10px;
+    background-color: white;
 }
 /**Footer**/
 footer{

@@ -41,5 +41,24 @@ var hobbiesData = [
         image : "images/coding.jpg" ,
         text : `Pour le plaisir, par curiosité et surtout par envie d'apprendre. `
        },
-       
+       {
+        title : "Coding 9" ,
+        image : "images/coding.jpg" ,
+        text : `Pour le plaisir, par curiosité et surtout par envie d'apprendre. `
+       },
+       {
+        title : "Coding 10" ,
+        image : "images/coding.jpg" ,
+        text : `Pour le plaisir, par curiosité et surtout par envie d'apprendre. `
+       },
+       {
+        title : "Coding 11" ,
+        image : "images/coding.jpg" ,
+        text : `Pour le plaisir, par curiosité et surtout par envie d'apprendre. `
+       },
+       {
+        title : "Coding 12" ,
+        image : "images/coding.jpg" ,
+        text : `Pour le plaisir, par curiosité et surtout par envie d'apprendre. `
+       }
     ]
