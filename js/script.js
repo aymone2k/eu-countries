@@ -56,17 +56,17 @@ function searchHobby(event){
         searchValue = searchValue.toLowerCase();
 
     if(searchValue !== ""){
-    for (let index = 0; index < hobbiesData.length; index++) {
-        var titleHobby = hobbiesData[index].title;
-            titleHobby = titleHobby.toLowerCase();
-        
-        var findHobby = document.getElementById(index+"-hobby");
+        for (let index = 0; index < hobbiesData.length; index++) {
+            var titleHobby = hobbiesData[index].title;
+                titleHobby = titleHobby.toLowerCase();
             
-        if(titleHobby.includes(searchValue) == false){
-            findHobby.style.display = "none"
-        }else{
-            findHobby.style.display = "inline-block";
-        }  
+            var findHobby = document.getElementById(index+"-hobby");
+            
+            if(titleHobby.includes(searchValue) == true){
+                findHobby.style.display = "flex";  
+            }else{
+                findHobby.style.display = "none";   
+            }  
     }
      }
     }
@@ -95,7 +95,7 @@ for (let i = 0; i < hobbiesData.length; i++) {
 for (let index = 0; index < hobbiesData.length+1; index++) {
     var survolHobby = document.getElementsByClassName("hobby")[index]
     //console.log(survolHobby)
-    survolHobby.addEventListener("mousemove", showDetailSurvol)
+    survolHobby.addEventListener("mousemove", showDetailSurvol);
 }
 
 
