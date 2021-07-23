@@ -79,6 +79,7 @@ var idHobby;
 var descriptionHobby;
 var titleOfHobby;
 
+
     // au clic de la checkbox
 var details = document.getElementById("details");
 details.addEventListener("mouseup", showDetailCheck ); 
@@ -92,10 +93,10 @@ for (let i = 0; i < hobbiesData.length; i++) {
 }
 
     // au survol de la div hobby
-for (let index = 0; index < hobbiesData.length+1; index++) {
-    var survolHobby = document.getElementsByClassName("hobby")[index]
-    //console.log(survolHobby)
-    survolHobby.addEventListener("mousemove", showDetailSurvol);
+for (let index = 0; index < hobbiesData.length; index++) {
+    var survolHobby = document.getElementsByClassName('hobby')[index];
+   //console.log(survolHobby)
+   survolHobby.addEventListener("mousemove", showDetailSurvol);
 }
 
 
@@ -144,4 +145,45 @@ function showDetailSurvol(event) {
     titleDetailHobby.innerHTML = titleOfHobby;
 
 }
+
+// gestion du top des hobbies
+
+
+for (let index = 0; index < hobbiesData.length; index++) {
+    var btnAddTopHobby = document.getElementsByClassName("btnHobbyAdd")[index];
+
+    btnAddTopHobby.addEventListener('click', addTopBtn )
+}
+
+
+function addTopBtn(event) {
+    //console.log(event.target)
+    idAddHobby = event.currentTarget.parentNode;
+    //positionAddHobby = idAddHobby.slice(0,-7);
+    //console.log(positionAddHobby) 
+    //infoHobby = hobbiesData[positionAddHobby]
+    //console.log(infoHobby)
+    console.log(idAddHobby)
+    
+    var hobby1 = document.getElementById("hobbies1");
+    var hobby2 = document.getElementById("hobbies2");
+    var hobby1Child = hobby1.childNodes;//reccup ts les noeuds( les elts) enfts de hobbies
+    var hobby2Child = hobby2.childNodes;
+    console.log(hobby1Child, hobby2Child)
+
+    if(hobby1Child.length == 1){
+       // console.log("top 1 vide");
+       hobby1.insertBefore(idAddHobby, hobby1Child[0]);
+       //voir pour modif le btn add 
+    }else if(hobby2Child.length == 1){
+        //console.log("top2 vide")
+        hobby2.insertBefore(idAddHobby, hobby2Child[0]);
+    }else{
+        alert("you have already selected 2 hobbies; please remove 1 hobby for adding another one")
+    }
+
+}
+
+
+
 }
