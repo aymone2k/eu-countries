@@ -1,9 +1,18 @@
 window.onload = function () {
+    // gestion de la requete ajax vers l'api 
+    let data = new XMLHttpRequest();
+data.open('GET', 'https://restcountries.eu/rest/v2/regionalbloc/eu');
+data.onreadystatechange = function(){
+    if(data.readyState == 4){
+        var response = JSON.parse(data.responseText);
+         
+ 
+
 
 //1-affichage dynamique des hobbies
 function createHobbie(nb){
-    var myHobby = hobbiesData[nb];
-
+    var myHobby = response[nb];
+console.log(myHobby)
     //creation d'une div pour un hobby
     var hobby = document.createElement('div');
     hobby.className = "hobby";
@@ -11,8 +20,8 @@ function createHobbie(nb){
 
     //creation de l'image
     var image = document.createElement('img');
-    image.src = myHobby.image;
-    image.alt = myHobby.title;
+    image.src = myHobby.flag;
+    image.alt = myHobby.name;
         // creation de la div pour l'image
         var img = document.createElement('div');
         img.className = "img";
@@ -20,7 +29,7 @@ function createHobbie(nb){
 
     //creation du titre
     var title = document.createElement('h3');
-    title.innerHTML = myHobby.title;
+    title.innerHTML = myHobby.name;
 
     //creation du bouton detail
     var btnDetail = document.createElement('button');
@@ -41,7 +50,7 @@ function createHobbie(nb){
     document.getElementById("hobbiesList").appendChild(hobby);
 }
 
-for (let index = 0; index < hobbiesData.length; index++) {
+for (let index = 0; index < response.length; index++) {
     createHobbie(index) 
 }
 
@@ -56,8 +65,8 @@ function searchHobby(event){
         searchValue = searchValue.toLowerCase();
 
     if(searchValue !== ""){
-        for (let index = 0; index < hobbiesData.length; index++) {
-            var titleHobby = hobbiesData[index].title;
+        for (let index = 0; index < response.length; index++) {
+            var titleHobby = response[index].name;
                 titleHobby = titleHobby.toLowerCase();
             
             var findHobby = document.getElementById(index+"-hobby");
@@ -86,14 +95,14 @@ details.addEventListener("mouseup", showDetailCheck );
 
     // au clic du btn detail 
     // fonctionne mais pas si pertinent puisseque le détail s'affiche déjà au survol
-for (let i = 0; i < hobbiesData.length; i++) {
+for (let i = 0; i < response.length; i++) {
     var btnDetail = document.getElementsByClassName('btnHobbyDetail')[i];
    // console.log(btnDetail)
     btnDetail.addEventListener("click", showDetailBtn);
 }
 
     // au survol de la div hobby
-for (let index = 0; index < hobbiesData.length; index++) {
+for (let index = 0; index < response.length; index++) {
     var survolHobby = document.getElementsByClassName('hobby')[index];
    //console.log(survolHobby)
    survolHobby.addEventListener("mousemove", showDetailSurvol);
@@ -121,9 +130,9 @@ function showDetailBtn(event){
     detailHobby.style.display = "flex";  
     //console.log(details)
     details.checked = "true";
-    descriptionHobby = hobbiesData[positionHobby].text;
-    //console.log(descriptionHobby)
-    titleOfHobby = hobbiesData[positionHobby].title;
+    descriptionHobby = " Capitale : " +response[positionHobby].capital + "<br/>"+"Habitants : " +response[positionHobby].demonym + "<br/>"+"Population : " +response[positionHobby].population;
+    //console.log(descriptionHobby) 
+    titleOfHobby = response[positionHobby].name;
 
     detailHobby.innerHTML = descriptionHobby;
     titleDetailHobby.innerHTML = titleOfHobby;
@@ -134,12 +143,12 @@ function showDetailSurvol(event) {
     //console.log(event.currentTarget.id)
     idHobby = event.currentTarget.id
   //console.log(idHobby)
-  //console.log(hobbiesData.length)
+  //console.log(response.length)
     positionHobby = idHobby.slice(0,-6);
     //console.log(positionHobby)
-    descriptionHobby = hobbiesData[positionHobby].text;
+    descriptionHobby = " Capitale : " +response[positionHobby].capital + "<br/>"+"Habitants : " +response[positionHobby].demonym + "<br/>"+"Population : " +response[positionHobby].population;
     //console.log(descriptionHobby)
-    titleOfHobby = hobbiesData[positionHobby].title;
+    titleOfHobby = response[positionHobby].name;
 
     detailHobby.innerHTML = descriptionHobby;
     titleDetailHobby.innerHTML = titleOfHobby;
@@ -149,7 +158,7 @@ function showDetailSurvol(event) {
 // gestion du top des hobbies
 
 
-for (let index = 0; index < hobbiesData.length; index++) {
+for (let index = 0; index < response.length; index++) {
     var btnAddTopHobby = document.getElementsByClassName("btnHobbyAdd")[index];
 
     btnAddTopHobby.addEventListener('click', addTopBtn )
@@ -161,7 +170,7 @@ function addTopBtn(event) {
     idAddHobby = event.currentTarget.parentNode;
     //positionAddHobby = idAddHobby.slice(0,-7);
     //console.log(positionAddHobby) 
-    //infoHobby = hobbiesData[positionAddHobby]
+    //infoHobby = response[positionAddHobby]
     //console.log(infoHobby)
     console.log(idAddHobby)
     
@@ -172,11 +181,11 @@ function addTopBtn(event) {
     console.log(hobby1Child, hobby2Child)
 
     if(hobby1Child.length == 1){
-       // console.log("top 1 vide");
+     
        hobby1.insertBefore(idAddHobby, hobby1Child[0]);
        //voir pour modif le btn add 
     }else if(hobby2Child.length == 1){
-        //console.log("top2 vide")
+     
         hobby2.insertBefore(idAddHobby, hobby2Child[0]);
     }else{
         alert("you have already selected 2 hobbies; please remove 1 hobby for adding another one")
@@ -186,4 +195,8 @@ function addTopBtn(event) {
 
 
 
+}
+
+}
+data.send();
 }
