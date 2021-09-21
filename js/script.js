@@ -12,7 +12,7 @@ data.onreadystatechange = function(){
 //1-affichage dynamique des hobbies
 function createHobbie(nb){
     var myHobby = response[nb];
-console.log(myHobby)
+//console.log(myHobby)
     //creation d'une div pour un hobby
     var hobby = document.createElement('div');
     hobby.className = "hobby";
@@ -41,7 +41,7 @@ console.log(myHobby)
     var btnAddTop = document.createElement('button');
     btnAddTop.className = "btnHobbyAdd";
     btnAddTop.id = `${nb}-addTop`;
-    btnAddTop.innerHTML = "Ajouter à mon Top";
+    btnAddTop.innerHTML = "<p>Ajouter à mon Top</p>";
 
     hobby.appendChild(img);
     hobby.appendChild(title);
@@ -130,7 +130,7 @@ function showDetailBtn(event){
     detailHobby.style.display = "flex";  
     //console.log(details)
     details.checked = "true";
-    descriptionHobby = " Capitale : " +response[positionHobby].capital + "<br/>"+"Habitants : " +response[positionHobby].demonym + "<br/>"+"Population : " +response[positionHobby].population;
+    descriptionHobby = `<p> Capitale :  ${response[positionHobby].capital}  <br/>  Habitants :  ${response[positionHobby].demonym }<br/>Population :  ${response[positionHobby].population}</p>`;
     //console.log(descriptionHobby) 
     titleOfHobby = response[positionHobby].name;
 
@@ -146,7 +146,7 @@ function showDetailSurvol(event) {
   //console.log(response.length)
     positionHobby = idHobby.slice(0,-6);
     //console.log(positionHobby)
-    descriptionHobby = " Capitale : " +response[positionHobby].capital + "<br/>"+"Habitants : " +response[positionHobby].demonym + "<br/>"+"Population : " +response[positionHobby].population;
+    descriptionHobby = `<p> Capitale :  ${response[positionHobby].capital}  <br/>  Habitants :  ${response[positionHobby].demonym }<br/>Population :  ${response[positionHobby].population}</p>`;
     //console.log(descriptionHobby)
     titleOfHobby = response[positionHobby].name;
 
@@ -155,44 +155,73 @@ function showDetailSurvol(event) {
 
 }
 
-// gestion du top des hobbies
-
-
+// gestion du top des pays
 for (let index = 0; index < response.length; index++) {
+    //ajout
     var btnAddTopHobby = document.getElementsByClassName("btnHobbyAdd")[index];
+    btnAddTopHobby.addEventListener('click', addTopBtn )   
 
-    btnAddTopHobby.addEventListener('click', addTopBtn )
 }
+var hobby1 = document.getElementById("hobbies1");
+var hobby2 = document.getElementById("hobbies2");
+        //ajout
+        function addTopBtn(event) {
+            //console.log(event.target)
+            idAddHobby = event.currentTarget.parentNode;
+            //console.log(hobby1, hobby2)
+            var hobby1Child = hobby1.childNodes;//reccup ts les noeuds( les elts) enfts de hobbies
+            var hobby2Child = hobby2.childNodes;
+           
+        
+            //console.log(hobby1Child, hobby2Child)
 
+            if(hobby1Child.length == 1){
+                
+            hobby1.insertBefore(idAddHobby, hobby1Child[0]);         
+         
+            
+            }else if(hobby2Child.length == 1){
+            
+                hobby2.insertBefore(idAddHobby, hobby2Child[0]);
+             
+               
+            }else{
+                alert("Vous avez déja selectionné 2 pays dans votre top, Veuillez en retier pour en ajouter d'autre")
+            
+            }
 
-function addTopBtn(event) {
-    //console.log(event.target)
-    idAddHobby = event.currentTarget.parentNode;
-    //positionAddHobby = idAddHobby.slice(0,-7);
-    //console.log(positionAddHobby) 
-    //infoHobby = response[positionAddHobby]
-    //console.log(infoHobby)
-    console.log(idAddHobby)
-    
-    var hobby1 = document.getElementById("hobbies1");
-    var hobby2 = document.getElementById("hobbies2");
-    var hobby1Child = hobby1.childNodes;//reccup ts les noeuds( les elts) enfts de hobbies
-    var hobby2Child = hobby2.childNodes;
-    console.log(hobby1Child, hobby2Child)
+        }
 
-    if(hobby1Child.length == 1){
+        //suppression
+
+        hobby1.addEventListener("click", removeTopBtn);
+        hobby2.addEventListener("click", removeTopBtn);
+        
+        function removeTopBtn(event){
      
-       hobby1.insertBefore(idAddHobby, hobby1Child[0]);
-       //voir pour modif le btn add 
-    }else if(hobby2Child.length == 1){
-     
-        hobby2.insertBefore(idAddHobby, hobby2Child[0]);
-    }else{
-        alert("you have already selected 2 hobbies; please remove 1 hobby for adding another one")
+            var hobby = event.currentTarget.parentNode;//pr reccup le parent de l'elet clické
+            //console.log (hobby)
+         
+            var hobbyChild = hobby.childNodes;
+          //  console.log(hobbyChild);
+            var topHobby1 = hobbyChild[3].childNodes;
+            var topHobby2 = hobbyChild[5].childNodes;
+           //console.log(topHobby1)
+           // console.log(topHobby1[0], topHobby2[0])
+            //console.log(hobby1)
+
+            if(topHobby1[0].className == "hobby"){
+                var hobbychildselect = topHobby1[0];
+                hobby1.removeChild(hobbychildselect);
+                document.getElementById("hobbiesList").appendChild(hobbychildselect)
+
+            }else if(topHobby2[0].className == "hobby"){
+                var hobbychildselect = topHobby2[0];
+                hobby2.removeChild(hobbychildselect);
+                document.getElementById("hobbiesList").appendChild(hobbychildselect)
+        }
+        else{console.log("coucou")}
     }
-
-}
-
 
 
 }
